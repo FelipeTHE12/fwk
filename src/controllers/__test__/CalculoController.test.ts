@@ -6,8 +6,12 @@ describe("CalculoController", () => {
     test("Deve retornar 200", async () => {
       const response = await request(app)
         .get("/")
-        .send({ numero: 30 })
+        .send({ numero: 45 })
         .expect(200);
+
+      const { numerosPrimos, numerosDivisores } = response.body[0];
+      expect(numerosDivisores).toStrictEqual([1, 3, 5, 9, 15, 45]);
+      expect(numerosPrimos).toStrictEqual([3, 5]);
     });
   });
 
@@ -19,59 +23,66 @@ describe("CalculoController", () => {
         .expect(400);
     });
 
-    test("Deve retornar 400 quando receber um número abaixo de 0", async () => {
+    test("Deve retornar 400 quando receber o campo numero com um número abaixo de 0", async () => {
       const response = await request(app)
         .get("/")
         .send({ numero: -1 })
         .expect(400);
     });
 
-    test("Deve retornar 400 quando receber um número maior que 1.000.000", async () => {
+    test("Deve retornar 400 quando receber o campo numero com um número maior que 1.000.000", async () => {
       const response = await request(app)
         .get("/")
         .send({ numero: 1000001 })
         .expect(400);
     });
 
-    test("Deve retornar 400 quando receber um numero em forma de string", async () => {
+    test("Deve retornar 400 quando receber o campo numero com com um numero em forma de string", async () => {
       const response = await request(app)
         .get("/")
         .send({ numero: "1000001" })
         .expect(400);
     });
 
-    test("Deve retornar 400 quando receber numero em forma de  boolean", async () => {
+    test("Deve retornar 400 quando receber o campo numero em forma de  boolean", async () => {
       const response = await request(app)
         .get("/")
         .send({ numero: false })
         .expect(400);
     });
 
-    test("Deve retornar 400 quando receber numero em forma de  boolean", async () => {
+    test("Deve retornar 400 quando receber o campo numero em forma de  boolean", async () => {
       const response = await request(app)
         .get("/")
         .send({ numero: true })
         .expect(400);
     });
 
-    test("Deve retornar 400 quando receber numero em forma de array", async () => {
+    test("Deve retornar 400 quando receber o campo numero em forma de array", async () => {
       const response = await request(app)
         .get("/")
         .send({ numero: [] })
         .expect(400);
     });
 
-    test("Deve retornar 400 quando receber numero em forma objeto", async () => {
+    test("Deve retornar 400 quando receber o campo numero em forma objeto", async () => {
       const response = await request(app)
         .get("/")
         .send({ numero: {} })
         .expect(400);
     });
 
-    test("Deve retornar 400 quando receber numero com pontos flutuantes", async () => {
+    test("Deve retornar 400 quando receber o campo numero com pontos flutuantes", async () => {
       const response = await request(app)
         .get("/")
         .send({ numero: 33.00001 })
+        .expect(400);
+    });
+
+    test("Deve retornar 400 quando receber o campo numero com valor null", async () => {
+      const response = await request(app)
+        .get("/")
+        .send({ numero: null })
         .expect(400);
     });
   });

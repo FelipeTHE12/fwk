@@ -1,11 +1,11 @@
 import { Router } from "express";
-import { IsNumberValidMiddlware } from "./middlewares/IsNumberValid";
+import { IsNumberValidRequest } from "./middlewares/IsNumberValidRequest";
 import { CalculoController } from "./controllers/CalculoController";
 const router = Router();
 //Colocar not found
-const isNumberValidMiddlware = new IsNumberValidMiddlware();
+const isNumberValidRequest = new IsNumberValidRequest();
 const calculoController = new CalculoController();
 
-router.get("/", isNumberValidMiddlware.handler, calculoController.handle);
+router.get("/", isNumberValidRequest.handler, calculoController.handle);
 
 export { router };
