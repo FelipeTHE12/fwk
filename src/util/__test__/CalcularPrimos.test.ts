@@ -1,6 +1,6 @@
 import { calcularNumerosPrimos } from "../calcularNumerosPrimos";
 
-describe("Calcular Numeros Divisores", () => {
+describe("Calcular Numeros Primos", () => {
   test("Deve retornar os divisores corretos", () => {
     const divisoresDe45 = [3, 5];
 
@@ -30,6 +30,12 @@ describe("Calcular Numeros Divisores", () => {
 
   test("Deve retornar undefined quando receber o valor 0", () => {
     const numPrimosTest = calcularNumerosPrimos(0);
+
+    expect(numPrimosTest).toEqual(undefined);
+  });
+
+  test("Deve retornar undefined quando receber um valor menor que 0", () => {
+    const numPrimosTest = calcularNumerosPrimos(-1);
 
     expect(numPrimosTest).toEqual(undefined);
   });

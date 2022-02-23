@@ -1,11 +1,7 @@
+import { isValidNumber } from "./isValidNumber";
+
 export function calcularNumerosPrimos(numero: number): number[] {
-  if (
-    isNaN(numero) ||
-    numero === 0 ||
-    !Number.isInteger(numero) ||
-    numero > 1000000 ||
-    numero === 1
-  ) {
+  if (!isValidNumber(numero) || numero === 1) {
     return;
   }
   let fatores = [];

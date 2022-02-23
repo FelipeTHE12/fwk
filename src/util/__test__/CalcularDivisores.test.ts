@@ -34,6 +34,12 @@ describe("Calcular Numeros Divisores", () => {
     expect(divisoresTest).toEqual(undefined);
   });
 
+  test("Deve retornar undefined quando receber um valor menor que 0", () => {
+    const divisoresTest = calcularNumerosDivisores(-1);
+
+    expect(divisoresTest).toEqual(undefined);
+  });
+
   test("Deve retornar undefined quando receber um valor float/decimal", () => {
     const divisoresTest = calcularNumerosDivisores(30.4);
 

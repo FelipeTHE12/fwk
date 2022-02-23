@@ -1,12 +1,7 @@
-import { number } from "yup/lib/locale";
+import { isValidNumber } from "./isValidNumber";
 
 export function calcularNumerosDivisores(numero: number): number[] {
-  if (
-    isNaN(numero) ||
-    numero === 0 ||
-    !Number.isInteger(numero) ||
-    numero > 1000000
-  ) {
+  if (!isValidNumber(numero)) {
     return;
   }
 

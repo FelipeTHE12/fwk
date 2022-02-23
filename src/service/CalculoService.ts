@@ -1,3 +1,4 @@
+import { NumberNotValidError } from "../errors/NumberNotValidError";
 import { calcularNumerosDivisores } from "../util/calcularNumerosDivisores";
 import { calcularNumerosPrimos } from "../util/calcularNumerosPrimos";
 
@@ -6,6 +7,10 @@ export class CalculoService {
     try {
       const numerosPrimos: number[] = await calcularNumerosPrimos(numero);
       const numerosDivisores: number[] = await calcularNumerosDivisores(numero);
+
+      if (!numerosPrimos || !numerosDivisores) {
+        throw new NumberNotValidError(["Número fornecido não é valido"]);
+      }
 
       return {
         numerosPrimos: numerosPrimos,
