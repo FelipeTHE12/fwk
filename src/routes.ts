@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { IsNumberValidMiddlware } from "./middlewares/IsNumberValidMiddlware";
+import { IsNumberValidMiddlware } from "./middlewares/IsNumberValid";
 import { CalculoController } from "./controllers/CalculoController";
 const router = Router();
 
