@@ -9,26 +9,27 @@ describe("Calcular Numeros Divisores", () => {
     expect(divisoresTest).toEqual(divisoresDe45);
   });
 
+  test("Não pode retornar números repetidos", () => {
+    const divisoresTest = calcularNumerosDivisores(100).length;
+    const divisoresComSet = new Set(calcularNumerosDivisores(100)).size;
+
+    expect(divisoresTest).toBe(divisoresComSet);
+  });
+
   test("Deve retornar 1 quando receber o valor 1", () => {
     const divisoresTest = calcularNumerosDivisores(1);
 
     expect(divisoresTest).toEqual([1]);
   });
 
+  test("Se o número for maior que 1.000.000 deve retornar undefined", () => {
+    const divisoresTest = calcularNumerosDivisores(1000001);
+
+    expect(divisoresTest).toEqual(undefined);
+  });
+
   test("Deve retornar undefined quando receber o valor 0", () => {
     const divisoresTest = calcularNumerosDivisores(0);
-
-    expect(divisoresTest).toEqual(undefined);
-  });
-
-  test("Deve retornar undefined quando receber string", () => {
-    const divisoresTest = calcularNumerosDivisores("dauifhadsiuhfiau");
-
-    expect(divisoresTest).toEqual(undefined);
-  });
-
-  test("Deve retornar undefined quando receber boolean", () => {
-    const divisoresTest = calcularNumerosDivisores("dauifhadsiuhfiau");
 
     expect(divisoresTest).toEqual(undefined);
   });

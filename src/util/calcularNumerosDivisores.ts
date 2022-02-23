@@ -1,5 +1,12 @@
-export function calcularNumerosDivisores(numero) {
-  if (isNaN(numero) || numero === 0 || !Number.isInteger(numero)) {
+import { number } from "yup/lib/locale";
+
+export function calcularNumerosDivisores(numero: number): number[] {
+  if (
+    isNaN(numero) ||
+    numero === 0 ||
+    !Number.isInteger(numero) ||
+    numero > 1000000
+  ) {
     return;
   }
 

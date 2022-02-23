@@ -4,10 +4,10 @@ import { CalculoService } from "../service/CalculoService";
 export class CalculoController {
   async handle(request: Request, response: Response) {
     try {
-      const {request.body} = number;
+      const { numero } = request.body;
       const calculoService = new CalculoService();
-      const a = await calculoService.execute();
-      response.json()
+      const a = await calculoService.calcularNumerosPrimosEDivisores(numero);
+      response.json();
     } catch (error) {
       //Logar
     }
