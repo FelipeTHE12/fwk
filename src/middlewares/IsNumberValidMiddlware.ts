@@ -1,10 +1,14 @@
 import { numberSchema } from "../validations/IsNumberValidaton";
 import { NextFunction, Request, Response } from "express";
+import { NumberNotValidError } from "../errors/NumberNotValidError";
 
-export class IsNumberMiddleware {
-  handler(request: Request, response: Response, next: NextFunction) {
-    console.log("Entrou no middlware");
-    response.send({});
-    return;
+export class IsNumberValidMiddlware {
+  async handler(request: Request, response: Response, next: NextFunction) {
+    try {
+      await numberSchema.validate(request.body);
+      next();
+    } catch (err) {
+      next(new NumberNotValidError(err.errors));
+    }
   }
 }

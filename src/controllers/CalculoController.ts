@@ -6,7 +6,8 @@ export class CalculoController {
     try {
       const calculoService = new CalculoService();
       const a = await calculoService.execute();
-      response.send(a);
+      response.send(a).status(200);
+      console.log(a);
     } catch (error) {
       console.log(error);
     }
