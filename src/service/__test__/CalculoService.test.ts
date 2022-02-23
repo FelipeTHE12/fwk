@@ -27,6 +27,11 @@ describe("Service calculo", () => {
     expect(result).toBe(undefined);
   });
 
+  test("Recebendo número  flutuante deve retornar undefined", async () => {
+    const result = await calculoService.calcularNumerosPrimosEDivisores(-1);
+    expect(result).toBe(undefined);
+  });
+
   test("Recebendo número  maior que 1.000.000 deve retornar undefined", async () => {
     const result = await calculoService.calcularNumerosPrimosEDivisores(
       1000001
