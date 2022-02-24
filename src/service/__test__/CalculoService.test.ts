@@ -11,7 +11,7 @@ describe("CalculoService", () => {
     expect(numerosPrimos).toStrictEqual([3, 5]);
   });
 
-  test("Recebendo valores VÁLIDOS, de números primos e primitivos, deve voltar um objeto sem REPETIÇÔES", async () => {
+  test("Se o array de divisores ou de primos, qualquer um dos dois for vazio, deve retornar undefined", async () => {
     const resultadoOperacoes =
       await calculoService.calcularNumerosPrimosEDivisores(45);
     const { numerosPrimos, numerosDivisores } = resultadoOperacoes[0];

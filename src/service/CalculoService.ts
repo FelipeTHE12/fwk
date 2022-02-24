@@ -15,7 +15,7 @@ export class CalculoService {
     const numerosPrimos: number[] = await calcularNumerosPrimos(numero);
     const numerosDivisores: number[] = await calcularNumerosDivisores(numero);
 
-    if (!numerosPrimos && !numerosDivisores) {
+    if (!numerosPrimos || !numerosDivisores) {
       return;
     }
 

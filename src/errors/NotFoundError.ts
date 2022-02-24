@@ -10,6 +10,6 @@ export class NotFoundError extends CustomError {
   }
 
   serializeErrors(): { message: string }[] {
-    return [{ message: "Rota não encontrada" }];
+    return [{ message: "Rota não encontrada, tente '/' ou /calcular." }];
   }
 }
