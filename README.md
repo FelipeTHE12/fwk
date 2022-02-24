@@ -22,7 +22,7 @@ Após o usuário digitar o número, Console pode mostrar:
 
 Pré requisito: instalar o [NodeJs](https://nodejs.org/en/)
 
-1.  Clone the project.
+1.  Clone o projeto.
 
 ```
 $ git clone https://github.com/FelipeTHE12/fwk
