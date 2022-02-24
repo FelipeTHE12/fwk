@@ -1,6 +1,6 @@
 import { calcularNumerosDivisores } from "../calcularNumerosDivisores";
 
-describe("Calcular Numeros Divisores", () => {
+describe("CalcularDivisores", () => {
   test("Deve retornar os divisores corretos", () => {
     const divisoresDe45 = [1, 3, 5, 9, 15, 45];
 

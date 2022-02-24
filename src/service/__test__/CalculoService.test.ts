@@ -2,7 +2,7 @@ import { CalculoService } from "../CalculoService";
 
 const calculoService = new CalculoService();
 
-describe("Service calculo", () => {
+describe("CalculoService", () => {
   test("Recebendo valores VÁLIDOS, de números primos e primitivos, deve voltar um objeto com o mesmo", async () => {
     const resultadoOperacoes =
       await calculoService.calcularNumerosPrimosEDivisores(45);

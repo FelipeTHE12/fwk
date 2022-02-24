@@ -1,6 +1,6 @@
 import { calcularNumerosPrimos } from "../calcularNumerosPrimos";
 
-describe("Calcular Numeros Primos", () => {
+describe("CalcularPrimos", () => {
   test("Deve retornar os divisores corretos", () => {
     const divisoresDe45 = [3, 5];
 

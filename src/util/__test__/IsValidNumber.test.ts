@@ -1,6 +1,6 @@
 import { isValidNumber } from "../isValidNumber";
 
-describe("isValidNumber", () => {
+describe("IsValidNumber", () => {
   test("hello", () => {
     const a = "hello";
     expect(a).toBe("hello");
