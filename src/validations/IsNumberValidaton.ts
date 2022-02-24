@@ -3,7 +3,8 @@ import * as yup from "yup";
 export const numberSchema = yup.object().shape({
   numero: yup
     .number()
-    .nullable(true)
+    .typeError("O campo number só aceita valores do tipo numerico.")
+    .nullable(false)
     .required("O campo number é obrigatório.")
     .positive("O campo number deve ser um número positivo.")
     .integer("O campo number deve ser inteiro.")
