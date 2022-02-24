@@ -1,5 +1,7 @@
 import request from "supertest";
 import { app } from "../../app";
+import { CalculoController } from "../CalculoController";
+import { NextFunction, Request, Response } from "express";
 
 describe("CalculoController", () => {
   describe("Valida funcionamento do controller", () => {

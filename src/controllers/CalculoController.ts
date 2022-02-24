@@ -19,7 +19,7 @@ export class CalculoController {
       if (!resultado) {
         throw new NumberNotValidError(["Numero fornecido não é valido"]);
       }
-
+      throw Error();
       response.json(resultado);
     } catch (error) {
       next(error);

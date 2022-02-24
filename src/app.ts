@@ -1,10 +1,13 @@
 import express from "express";
-import { ErrorHandler } from "./middlewares/ErrorHandler";
+import swaggerUi from "swagger-ui-express";
+import SwaggerDocs from "./config/SwaggerDocs.json";
 import { router } from "./routes";
-import "express-async-errors";
+import { ErrorHandler } from "./middlewares/ErrorHandler";
 
 const app = express();
 app.use(express.json());
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(SwaggerDocs));
 
 app.use(router);
 
