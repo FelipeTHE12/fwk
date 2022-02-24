@@ -5,7 +5,8 @@ import { NumberNotValidError } from "../errors/NumberNotValidError";
 export class IsNumberValidRequest {
   async handler(request: Request, response: Response, next: NextFunction) {
     try {
-      await numberSchema.validate(request.body);
+      const { numero } = request.query;
+      await numberSchema.validate({ numero: numero });
       next();
     } catch (err) {
       next(new NumberNotValidError(err.errors));

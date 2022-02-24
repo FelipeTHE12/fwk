@@ -11,6 +11,17 @@ describe("Service calculo", () => {
     expect(numerosPrimos).toStrictEqual([3, 5]);
   });
 
+  test("Recebendo valores VÁLIDOS, de números primos e primitivos, deve voltar um objeto sem REPETIÇÔES", async () => {
+    const resultadoOperacoes =
+      await calculoService.calcularNumerosPrimosEDivisores(45);
+    const { numerosPrimos, numerosDivisores } = resultadoOperacoes[0];
+    const numerosPrimosNaoRepetidos = new Set(numerosPrimos);
+    const numerosDivisoresNaoRepetidos = new Set(numerosDivisores);
+
+    expect(numerosPrimos.length).toEqual(numerosPrimosNaoRepetidos.size);
+    expect(numerosDivisores.length).toEqual(numerosDivisoresNaoRepetidos.size);
+  });
+
   test("Recebendo número 0 deve retornar divisor com apenas o número 1 e primos vazio", async () => {
     const resultadoOperacoes =
       await calculoService.calcularNumerosPrimosEDivisores(1);
@@ -40,6 +51,12 @@ describe("Service calculo", () => {
   test("Recebendo número  maior que 1.000.000 deve retornar undefined", async () => {
     const resultadoOperacoes =
       await calculoService.calcularNumerosPrimosEDivisores(1000001);
+    expect(resultadoOperacoes).toBe(undefined);
+  });
+
+  test("Recebendo número  null deve retornar undefined", async () => {
+    const resultadoOperacoes =
+      await calculoService.calcularNumerosPrimosEDivisores(null);
     expect(resultadoOperacoes).toBe(undefined);
   });
 });

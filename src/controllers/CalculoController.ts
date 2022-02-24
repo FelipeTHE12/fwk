@@ -7,19 +7,20 @@ export class CalculoController {
     request: Request,
     response: Response,
     next: NextFunction
-  ): Promise<any> {
+  ): Promise<void> {
     const calculoService = new CalculoService();
+
     try {
-      const { numero } = request.body;
+      const { numero } = request.query;
 
       const resultado = await calculoService.calcularNumerosPrimosEDivisores(
-        numero
+        Number(numero)
       );
 
       if (!resultado) {
         throw new NumberNotValidError(["Numero fornecido não é valido"]);
       }
-      throw Error();
+
       response.json(resultado);
     } catch (error) {
       next(error);

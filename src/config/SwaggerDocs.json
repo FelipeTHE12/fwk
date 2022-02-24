@@ -166,37 +166,14 @@
         },
         "operationId": "Calcular",
         "description": "Esse endpoint tem o objetivo de realizar os calculos com precisão.",
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "description": "",
-                "type": "object",
-                "x-examples": {
-                  "example-1": {
-                    "numero": 45
-                  }
-                },
-                "properties": {
-                  "numero": {
-                    "type": "number",
-                    "description": "O campo \"numero\" não pode ser nulo, float/decimal, string, menor ou igual a zero, maior que 1.000.000.",
-                    "maximum": 1000000,
-                    "minimum": 1
-                  }
-                },
-                "required": ["numero"]
-              },
-              "examples": {
-                "example-1": {
-                  "value": {
-                    "numero": 45
-                  }
-                }
-              }
-            }
+        "parameters": [
+          {
+            "schema": {},
+            "in": "query",
+            "name": "numero",
+            "description": "Número que sera usado para realizar os calculos de divisores e divisores primos"
           }
-        }
+        ]
       }
     }
   }
