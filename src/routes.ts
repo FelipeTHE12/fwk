@@ -8,8 +8,6 @@ const router = Router();
 const isNumberValidRequest = new IsNumberValidRequest();
 const calculoController = new CalculoController();
 
-router.get("/", () => response.send("").status(200));
-
 router.get("/calcular", isNumberValidRequest.handler, calculoController.handle);
 
 router.all("*", (request: Request, response: Response, next: NextFunction) => {
