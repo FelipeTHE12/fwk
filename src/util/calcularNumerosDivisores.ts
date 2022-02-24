@@ -1,17 +1,14 @@
-import { isValidNumber } from "./isValidNumber";
+import { eNumeroValido } from "./eNumeroValido";
 
 export function calcularNumerosDivisores(numero: number): number[] {
-  if (!isValidNumber(numero)) {
+  if (!eNumeroValido(numero)) {
     return;
   }
 
-  let divisores = [],
-    quociente = 0;
+  let divisores = [];
 
   for (let i = 1; i <= numero; i++) {
-    quociente = numero / i;
-
-    if (quociente === Math.floor(quociente)) {
+    if (numero % i === 0) {
       divisores.push(i);
     }
   }

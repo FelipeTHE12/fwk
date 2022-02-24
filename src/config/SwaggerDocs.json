@@ -171,7 +171,7 @@
             "schema": {},
             "in": "query",
             "name": "numero",
-            "description": "Número que sera usado para realizar os calculos de divisores e divisores primos"
+            "description": "Número que sera usado para realizar os calculos de divisores e divisores primos. OBS: numero deve ser do tipo inteiro, maior que 0, não float/decimal."
           }
         ]
       }

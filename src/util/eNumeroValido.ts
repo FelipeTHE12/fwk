@@ -1,4 +1,4 @@
-export function isValidNumber(numero: number): boolean {
+export function eNumeroValido(numero: number): boolean {
   //Valida se números são validos para operação de números Primos e Divisores
   if (
     isNaN(numero) ||

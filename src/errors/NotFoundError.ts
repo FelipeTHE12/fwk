@@ -5,7 +5,6 @@ export class NotFoundError extends CustomError {
 
   constructor() {
     super("Rota não encontrada");
-
     Object.setPrototypeOf(this, NotFoundError.prototype);
   }
 

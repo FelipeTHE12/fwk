@@ -1,9 +1,9 @@
 import request from "supertest";
 import { app } from "../../app";
-
+import { eNumeroPrimo } from "../../util/eNumeroPrimo";
 describe("CalculoController", () => {
   describe("Valida funcionamento do controller", () => {
-    test("Deve retornar 200 quando iserido valores válidos", async () => {
+    test("Deve retornar 200 quando iserido valores válidos - 45", async () => {
       const response = await request(app)
         .get(`/calcular?numero=${45}`)
         .expect(200);
@@ -11,6 +11,20 @@ describe("CalculoController", () => {
       const { numerosPrimos, numerosDivisores } = response.body[0];
       expect(numerosDivisores).toStrictEqual([1, 3, 5, 9, 15, 45]);
       expect(numerosPrimos).toStrictEqual([3, 5]);
+    });
+
+    test("Deve retornar 200 quando iserido valores válidos - 100", async () => {
+      const response = await request(app)
+        .get(`/calcular?numero=${100}`)
+        .expect(200);
+
+      const { numerosPrimos, numerosDivisores } = response.body[0];
+      expect(numerosDivisores).toStrictEqual([1, 2, 4, 5, 10, 20, 25, 50, 100]);
+      expect(
+        numerosPrimos.forEach((num) => {
+          expect(eNumeroPrimo(num)).toBe(true);
+        })
+      );
     });
 
     test("Não deve ter valores repetidos e retornar 200 quando iserido valores válidos", async () => {
