@@ -19,7 +19,7 @@ Após o usuário digitar o número, Console pode mostrar:
 
 	Números divisores: 1 3 5 9 15 45
 
-	Divisores Primos: 1 3 5
+	Divisores Primos: 3 5
 ## Quick start
 
 Pré requisito: instalar o   [NodeJs](https://nodejs.org/en/) 
