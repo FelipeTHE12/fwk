@@ -20,35 +20,30 @@ describe("filtrarNumerosPrimos", () => {
     test("Vai retirar valor nulo do array e so achar os primos", () => {
       const array = [2, 3, 5, null, 11];
       const novoArray = filtrarNumerosPrimos(array);
-      console.log(novoArray);
       expect(novoArray).toEqual([2, 3, 5, 11]);
     });
 
     test("Vai retirar valor 0 do array e so achar os primos", () => {
       const array = [2, 3, 5, 0, 11];
       const novoArray = filtrarNumerosPrimos(array);
-      console.log(novoArray);
       expect(novoArray).toEqual([2, 3, 5, 11]);
     });
 
     test("Vai retirar valor -1 do array e so achar os primos", () => {
       const array = [2, 3, 5, -1, 11];
       const novoArray = filtrarNumerosPrimos(array);
-      console.log(novoArray);
       expect(novoArray).toEqual([2, 3, 5, 11]);
     });
 
     test("Vai retirar valor 1.000.001 do array e so achar os primos", () => {
       const array = [2, 3, 5, 1000001, 11];
       const novoArray = filtrarNumerosPrimos(array);
-      console.log(novoArray);
       expect(novoArray).toEqual([2, 3, 5, 11]);
     });
 
     test("Vai retirar valor float/decimal do array e so achar os primos", () => {
       const array = [2, 3, 5, 33.4, 11];
       const novoArray = filtrarNumerosPrimos(array);
-      console.log(novoArray);
       expect(novoArray).toEqual([2, 3, 5, 11]);
     });
   });
