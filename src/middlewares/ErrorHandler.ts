@@ -13,7 +13,7 @@ export const ErrorHandler = (
     return res.status(err.statusCode).send({ errors: err.serializeErrors() });
   }
 
-  logger.info(`Erro inesperado`);
+  logger.info(`Erro inesperado => ${err.message}`);
   res.status(500).send({
     errors: [{ message: "Um erro aconteceu, favor contatar administradores." }],
   });
