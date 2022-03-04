@@ -1,6 +1,10 @@
 import request from "supertest";
 import { app } from "../../app";
 import { eNumeroPrimo } from "../../util/eNumeroPrimo";
+import { NextFunction, Request, Response } from "express";
+import { CalculoController } from "../CalculoController";
+import { NumberNotValidError } from "../../errors/NumberNotValidError";
+
 describe("CalculoController", () => {
   describe("Valida funcionamento do controller", () => {
     test("Deve retornar 200 quando iserido valores válidos - 45", async () => {
@@ -40,6 +44,39 @@ describe("CalculoController", () => {
       expect(numerosDivisores.length).toEqual(
         numerosDivisoresNaoRepetidos.size
       );
+    });
+  });
+
+  describe("Valida excecoes no controller", () => {
+    const calculoController = new CalculoController();
+
+    let mockRequest: Partial<Request>;
+    let mockResponse: Partial<Response>;
+    let nextFunction: NextFunction = jest.fn();
+
+    beforeEach(() => {
+      mockRequest = {};
+      mockResponse = {
+        json: jest.fn(),
+      };
+      nextFunction = jest.fn();
+    });
+
+    test("Se o controller receber um número não válido, deve throw NumberNotValid", async () => {
+      mockRequest = {
+        query: {
+          numero: "DASIHDAISHDIASHui",
+        },
+      };
+
+      await calculoController.handle(
+        mockRequest as Request,
+        mockResponse as Response,
+        nextFunction
+      );
+
+      expect(nextFunction).toBeCalledTimes(1);
+      expect(nextFunction).toBeCalledWith(new NumberNotValidError([]));
     });
   });
 

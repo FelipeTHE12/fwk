@@ -1,7 +1,6 @@
-import { NextFunction, Router, Request, Response, response } from "express";
+import { Router } from "express";
 import { IsNumberValidRequest } from "./middlewares/IsNumberValidRequest";
 import { CalculoController } from "./controllers/CalculoController";
-import { NotFoundError } from "./errors/NotFoundError";
 import { RouteHandler } from "./middlewares/RouteHandler";
 
 const router = Router();
