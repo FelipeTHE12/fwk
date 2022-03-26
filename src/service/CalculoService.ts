@@ -1,11 +1,12 @@
 import { filtrarNumerosPrimos } from "../util/filtrarNumerosPrimos";
 import { calcularNumerosDivisores } from "../util/calcularNumerosDivisores";
 import { eNumeroValido } from "../util/eNumeroValido";
+import { NumberNotValidError } from "../errors/NumberNotValidError";
 
 export class CalculoService {
   async calcularNumerosPrimosEDivisores(numero: number): Promise<Object> {
     if (!eNumeroValido(numero)) {
-      return;
+      return new NumberNotValidError(["Número fornecido não é valido."]);
     }
 
     if (numero === 1) {
@@ -17,10 +18,6 @@ export class CalculoService {
     const numerosPrimos: number[] = await filtrarNumerosPrimos(
       numerosDivisores
     );
-
-    if (!numerosPrimos || !numerosDivisores) {
-      return;
-    }
 
     return [
       {

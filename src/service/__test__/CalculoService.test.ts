@@ -1,9 +1,10 @@
 import { CalculoService } from "../CalculoService";
 import { eNumeroPrimo } from "../../util/eNumeroPrimo";
-
-const calculoService = new CalculoService();
+import { NumberNotValidError } from "../../errors/NumberNotValidError";
 
 describe("CalculoService", () => {
+  const calculoService = new CalculoService();
+
   describe("Logica do metodo", () => {
     test("Recebendo valores VÁLIDOS, de números primos e primitivos, deve voltar um objeto com o mesmo", async () => {
       const resultadoOperacoes =
@@ -40,7 +41,7 @@ describe("CalculoService", () => {
       );
     });
 
-    test("Recebendo número 0 deve retornar divisor com apenas o número 1 e primos vazio", async () => {
+    test("Recebendo número 1 deve retornar divisor com apenas o número 1 e primos vazio", async () => {
       const resultadoOperacoes =
         await calculoService.calcularNumerosPrimosEDivisores(1);
       const { numerosPrimos, numerosDivisores } = resultadoOperacoes[0];
@@ -51,31 +52,41 @@ describe("CalculoService", () => {
     test("Recebendo um número menor que 0 deve retornar undefined", async () => {
       const resultadoOperacoes =
         await calculoService.calcularNumerosPrimosEDivisores(-1);
-      expect(resultadoOperacoes).toBe(undefined);
+      expect(resultadoOperacoes).toEqual(
+        new NumberNotValidError(["Número fornecido não é valido."])
+      );
     });
 
     test("Recebendo número  0 deve retornar undefined", async () => {
       const resultadoOperacoes =
         await calculoService.calcularNumerosPrimosEDivisores(-1);
-      expect(resultadoOperacoes).toBe(undefined);
+      expect(resultadoOperacoes).toEqual(
+        new NumberNotValidError(["Número fornecido não é valido."])
+      );
     });
 
     test("Recebendo número  flutuante deve retornar undefined", async () => {
       const resultadoOperacoes =
         await calculoService.calcularNumerosPrimosEDivisores(3.011111);
-      expect(resultadoOperacoes).toBe(undefined);
+      expect(resultadoOperacoes).toEqual(
+        new NumberNotValidError(["Número fornecido não é valido."])
+      );
     });
 
     test("Recebendo número  maior que 1.000.000 deve retornar undefined", async () => {
       const resultadoOperacoes =
         await calculoService.calcularNumerosPrimosEDivisores(1000001);
-      expect(resultadoOperacoes).toBe(undefined);
+      expect(resultadoOperacoes).toEqual(
+        new NumberNotValidError(["Número fornecido não é valido."])
+      );
     });
 
     test("Recebendo número  null deve retornar undefined", async () => {
       const resultadoOperacoes =
         await calculoService.calcularNumerosPrimosEDivisores(null);
-      expect(resultadoOperacoes).toBe(undefined);
+      expect(resultadoOperacoes).toEqual(
+        new NumberNotValidError(["Número fornecido não é valido."])
+      );
     });
   });
 });
